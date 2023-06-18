@@ -1,0 +1,15 @@
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 2vh;
+    height: 2vh;
+    font-size: 15px;
+    margin: 5px;
+    
+}
