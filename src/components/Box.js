@@ -6,18 +6,17 @@ function But({value, onButsClick}){
         <button className='box' onClick={onButsClick}>{value}</button>
         )
     }
-    function Box  (xIsNext, but, onPlay) {
+    export function Box  () {
         const [xIsNext, setXIsNext] = useState(true);
-        const [buts, setButs] = useState(Array(9).fill(null));
+        const [buts, setButs] = useState(Array(9).fill(null));        
         function handleClick(i) {
-            if(buts[i]||calculateWinner(buts)) { 
+            if(calculateWinner(buts)||buts[i]) { 
                 return ;
             }
             const nextButs = buts.slice();
             xIsNext?nextButs[i] = "X":nextButs[i] = "O";
             setButs(nextButs);
             setXIsNext(!xIsNext);
-            
         }
         const winner =calculateWinner(buts);
         let status;
@@ -45,24 +44,6 @@ function But({value, onButsClick}){
     )
 }
 
-export function Game(){
-    const [xIsNext,setXIsNext]=useState(true);
-    const [history,setHistory]=useState([Array(9).fill(null)]);
-    const currentBut= history[history.length - 1];
-    function handlePlay(nextButs) {
-
-    }
-    return (
-        <div className="game">
-            <div className="game-box">
-                <Box/>
-            </div>
-            <div className="game-info">
-                <ol>{}</ol>
-            </div>
-        </div>
-    )
-}
 
 function calculateWinner(buts) {
     const lines = [
